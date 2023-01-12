@@ -127,7 +127,7 @@ def main():
         while not done:
             action = agent.choose_action(state)
             state_, reward, done, truncated, _ = env.step(action)
-            # done = done or truncated
+            done = done or truncated
 
             agent.memory_add(state, action, reward, state_, done)
 
