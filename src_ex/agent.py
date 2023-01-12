@@ -36,19 +36,13 @@ class AgentOffPolicy:
             action: the choosen action.
         """
         action = self.exploration.random_action()
-        if action is None:
-            with torch.no_grad():
-                action = torch.argmax(self.net(torch.tensor(state))).item()
-        return action
+        # TODO comupute the action if needed
 
     def learn(self) -> None:
         """Takes care of the learning of the network."""
-        if self.memory.idx_memory >= self.memory.batch_sz:
-            states, actions, rewards, states_, dones = self.memory.batch()
-            for _ in range(self.iterations_number):
-                for i in range(self.memory.batch_numbers):
-                    y, y_hat = self.learn_algo(self.net, states[i], actions[i], rewards[i], states_[i], dones[i])
-                    self.net.learn(y, y_hat)
+        # TODO get the batches from the memory
+        # TODO compute q and q target
+        # TODO train the network
        
     def memory_add(self, state: np.array, action: int, reward: float, state_: np.array, done: int) -> None:
         """

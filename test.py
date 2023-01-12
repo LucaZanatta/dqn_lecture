@@ -9,8 +9,9 @@ from src import NetworkCartPole
 
 
 def main():
-    path = Path("data/2023-01-11_16-49-25/net_best.pth")
+    # path = Path("data/2023-01-11_16-49-25/net_best.pth")
     # path = Path("data/2023-01-11_11-14-19/net_chkpt_00000.pth")
+    path = Path("data/2023-01-12_12-46-38/net_best.pth")
 
     games = 100
 

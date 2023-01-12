@@ -19,19 +19,10 @@ class NetworkCartPole(nn.Module):
             device: the device in which runs the code. IT WORKS ONLY IN CPU
         """
         super(NetworkCartPole, self).__init__()
-        self.input_dim = input_dim[0]
-        self.output_dim = output_dim
-        self.device = device
-        
-        self.net = nn.Sequential(
-            nn.Linear(self.input_dim, 128),
-            nn.ReLU(),
-            nn.Linear(128, output_dim)
-        )
 
-        self.loss = nn.MSELoss()
-        self.optimizer = optim.RMSprop(self.parameters(), lr=lr)
-        self.to(self.device)
+        # TODO creates the network
+        # TODO init the loss function
+        # TODO init the optimizer
 
     def forward(self, state: torch.tensor) -> torch.tensor:
         """
@@ -40,7 +31,7 @@ class NetworkCartPole(nn.Module):
         Returns:
             prediction of the network.
         """
-        return self.net(state)
+        # TODO inference of the network
 
     def learn(self, y: torch.tensor, y_hat: torch.tensor) -> None:
         """
@@ -48,12 +39,9 @@ class NetworkCartPole(nn.Module):
 
         Args:
             y: prediction
-            y_hat: target 
+            y_hat: target
         """
-        loss = self.loss(y, y_hat)
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
+        # TODO Train the network
     
     def save(self, path: Path) -> None:
         """Saves the network"""
